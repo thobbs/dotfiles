@@ -107,4 +107,7 @@ export EMAIL='tyler@datastax.com'
 export DEBMAIL='tyler@datastax.com'
 export DEBFULLNAME='Tyler Hobbs'
 
+# Don't complete these filetypes
+export FIGNORE=.svn:.pyc:.o
+
 set -o vi
