@@ -44,7 +44,5 @@ function! ToggleFold()
     endif
 endfunction
 
-" Turn on line numbers:
-set number
 " Toggle line numbers and fold column for easy copying:
 nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
