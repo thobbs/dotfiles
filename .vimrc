@@ -23,6 +23,7 @@ function! ChangePaste(type, ...)
     silent exe "normal! p"
 endfunction
 
+autocmd FileType python set foldmethod=indent
 let python_highlight_all = 1
 
 " Allow easy navigation to relative files
