@@ -46,3 +46,17 @@ endfunction
 
 " Toggle line numbers and fold column for easy copying:
 nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
+
+" custom color schemes for statusline
+hi User1 ctermbg=black ctermfg=114   guibg=black guifg=blue
+hi User2 ctermbg=black ctermfg=blue  guibg=black guifg=blue
+hi User3 ctermbg=black ctermfg=red   guibg=black  guifg=red
+
+set laststatus=2
+set statusline=
+set statusline+=[%1*%n%*]\               " buffer number
+set statusline+=%2*%<%.99f\              " path, filename
+set statusline+=%3*%h%w%m%r%*\           " flags
+set statusline+=%{fugitive#statusline()} " git status
+set statusline+=%=                       " right align
+set statusline+=%-10(\ %l,%c\ %)%P       " position
