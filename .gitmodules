@@ -13,3 +13,6 @@
 [submodule ".vim/bundle/vim-pyflakes"]
 	path = .vim/bundle/vim-pyflakes
 	url = https://github.com/nvie/vim-pyflakes.git
+[submodule ".vim/bundle/vim-powerline"]
+	path = .vim/bundle/vim-powerline
+	url = https://github.com/Lokaltog/vim-powerline.git
