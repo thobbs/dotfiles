@@ -47,6 +47,8 @@ endfunction
 " Toggle line numbers and fold column for easy copying:
 nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 
+let g:Powerline_symbols = 'fancy'
+
 " custom color schemes for statusline
 hi User1 ctermbg=black ctermfg=114   guibg=black guifg=blue
 hi User2 ctermbg=black ctermfg=blue  guibg=black guifg=blue
