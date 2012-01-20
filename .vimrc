@@ -1,18 +1,27 @@
+set nocompatible
+
 call pathogen#infect()
 call pathogen#helptags()
 
 syntax enable
 filetype plugin indent on
-
 set background=dark
+
 set tabstop=4
 set shiftwidth=4
 set expandtab
+
 set mouse=r
+
 set incsearch
 set hlsearch
+
 set wildignore=*.pyc
+
 set foldmethod=syntax
+
+" Visually indicate trailing whitespace
+set list listchars=tab:\ \ ,trail:·
 
 colorscheme 256-grayvim
 
@@ -29,10 +38,14 @@ let python_highlight_all = 1
 " Allow easy navigation to relative files
 cmap %/ %:p:h/
 
+" Folding
+set foldnestmax=2 "deepest fold is 2 levels
+set nofoldenable "dont fold by default
+
 " Single key folding
 map <buffer> f za
 map <buffer> F :call ToggleFold()<CR>
-let b:folded = 1
+let b:folded = 0
 
 function! ToggleFold()
     if( b:folded == 0 )
