@@ -8,6 +8,9 @@ ln -s "$DIR/.vimrc" ~/.vimrc
 rm -f ~/.bashrc
 ln -s "$DIR/.bashrc" ~/.bashrc
 
+rm -f ~/.bash_aliases
+ln -s "$DIR/.bash_aliases" ~/.bash_aliases
+
 rm -f ~/.gitconfig
 ln -s "$DIR/.gitconfig" ~/.gitconfig
 
@@ -19,6 +22,7 @@ git submodule update
 rm -rf ~/.vim
 ln -s "$DIR/.vim" ~/.vim
 
+[ -d ~/.fonts ] || mkdir ~/.fonts
 cp fonts/* ~/.fonts
 sudo fc-cache -vf
 rm -f /tmp/Powerline.cache
