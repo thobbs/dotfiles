@@ -127,21 +127,6 @@ syn keyword pythonPreCondit	import from as
 syn keyword pythonException	try except finally
 syn keyword pythonOperator	and in is not or
 
-" Folding
-setlocal foldmethod=syntax
-
-syn match   pythonDefStatement  /^\s*\%(def\|class\) /
-  \ nextgroup=pythonFunction skipwhite
-syn region  pythonFunctionFold  start="^\z(\s*\)\%(def\|class\)\>"
-  \ end="\ze\%(\s*\n\)\+\%(\z1\s\)\@!." fold transparent
-syn match   pythonFunction  "[a-zA-Z_][a-zA-Z0-9_]*" contained
-
-syn match   pythonComment /#\%(.\%({{{\|}}}\)\@!\)*$/
-  \ contains=pythonTodo,@Spell
-syn region  pythonFold matchgroup=pythonComment
-  \ start='#.*{{{.*$' end='#.*}}}.*$' fold transparent
-
-
 if !exists("python_print_as_function") || python_print_as_function == 0
   syn keyword pythonStatement print
 endif
