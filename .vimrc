@@ -63,6 +63,9 @@ nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 " Automatically run pyflakes after writing a python file
 autocmd BufWritePost *.py call Pyflakes()
 
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! %!sudo tee > /dev/null %
+
 let g:Powerline_symbols = 'fancy'
 
 " custom color schemes for statusline
