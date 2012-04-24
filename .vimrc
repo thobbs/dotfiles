@@ -60,6 +60,9 @@ endfunction
 " Toggle line numbers and fold column for easy copying:
 nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 
+" Automatically run pyflakes after writing a python file
+autocmd BufWritePost *.py call Pyflakes()
+
 let g:Powerline_symbols = 'fancy'
 
 " custom color schemes for statusline
