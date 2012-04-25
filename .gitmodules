@@ -10,12 +10,6 @@
 [submodule ".vim/bundle/vim-markdown"]
 	path = .vim/bundle/vim-markdown
 	url = https://github.com/tpope/vim-markdown.git
-[submodule ".vim/bundle/vim-pyflakes"]
-	path = .vim/bundle/vim-pyflakes
-	url = https://github.com/nvie/vim-pyflakes.git
 [submodule ".vim/bundle/vim-powerline"]
 	path = .vim/bundle/vim-powerline
 	url = https://github.com/Lokaltog/vim-powerline.git
-[submodule ".vim/bundle/pyflakes-vim"]
-	path = .vim/bundle/pyflakes-vim
-	url = https://github.com/kevinw/pyflakes-vim.git
