@@ -110,4 +110,7 @@ export DEBFULLNAME='Tyler Hobbs'
 # Don't complete these filetypes
 export FIGNORE=.svn:.pyc:.o
 
+# man pages shouldn't fill my 30 inch monitor
+export MANWIDTH=100
+
 set -o vi
