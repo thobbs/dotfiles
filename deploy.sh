@@ -17,6 +17,9 @@ ln -s "$DIR/.gitconfig" ~/.gitconfig
 rm -rf ~/.ipython
 ln -s "$DIR/.ipython" ~/.ipython
 
+rm -rf ~/.irssi
+ln -s "$DIR/.irssi" ~/.irssi
+
 git submodule init
 git submodule update
 rm -rf ~/.vim
