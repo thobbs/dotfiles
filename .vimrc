@@ -62,7 +62,7 @@ nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 
 " Automatically run pyflakes after writing a python file
 autocmd BufWritePost *.py call Flake8()
-let g:flake8_ignore="E501,E302,E261,W801"
+let g:flake8_ignore="E501,E302,E261,E701,E241,W801"
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! %!sudo tee > /dev/null %
