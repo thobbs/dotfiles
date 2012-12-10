@@ -94,13 +94,21 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# fasd caching
+fasd_cache="$HOME/.fasd-init-bash"
+if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+      fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
+fi
+source "$fasd_cache"
+unset fasd_cache
+
 function gdv {
     git diff --cached $@ | vim -R -
 }
 
-export JAVA_HOME=/usr/lib/jvm/java-6-sun
+export JAVA_HOME=/usr/lib/jvm/java-6-oracle
 
-export JDK_HOME=/usr/lib/jvm/java-6-sun
+export JDK_HOME=/usr/lib/jvm/java-6-oracle
 export EDITOR=vim
 
 export EMAIL='tyler@datastax.com'
@@ -114,3 +122,5 @@ export FIGNORE=.svn:.pyc:.o
 export MANWIDTH=100
 
 set -o vi
+
+PATH=$PATH:$HOME/.rvm/bin:/usr/lib/jvm/java-6-oracle/bin
