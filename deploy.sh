@@ -24,8 +24,3 @@ git submodule init
 git submodule update
 rm -rf ~/.vim
 ln -s "$DIR/.vim" ~/.vim
-
-[ -d ~/.fonts ] || mkdir ~/.fonts
-cp fonts/* ~/.fonts
-sudo fc-cache -vf
-rm -f /tmp/Powerline.cache
