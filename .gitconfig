@@ -1,3 +1,5 @@
 [user]
 	name = Tyler Hobbs
-	email = tyler@datastax.com
+	email = tyler@tylerlhobbs.com
+[core]
+	excludesfile = /home/thobbs/.gitignore_global
