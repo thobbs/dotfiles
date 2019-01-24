@@ -7,24 +7,29 @@
 
 export TERM=xterm-256color
 
+
+######################### BASH HISTORY #######################################
+
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
-#export HISTIGNORE="&:ls:exit"
 
 # append to the history file, don't overwrite it
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=2000
-HISTFILESIZE=5000
+HISTSIZE=100000
+HISTFILESIZE=100000
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
+# After each command, append to the history file and reread it. This
+# ensures that the history is updated and shared by all running terminals.
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+##############################################################################
+
+
+
+######################### PROMPTS AND COLORS #################################
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
@@ -100,6 +105,12 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+##############################################################################
+
+
+
+
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -116,20 +127,20 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# fasd caching
-# fasd_cache="$HOME/.fasd-init-bash"
-# if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-#       fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
-# fi
-# source "$fasd_cache"
-# unset fasd_cache
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
 
 function gdv {
-    git diff --cached $@ | vim -R -
+    git diff --cached $@ | nvim -R -
 }
 
-export JAVA_HOME=/usr/lib/jvm/java-9.0.4-oracle
-export EDITOR=vim
+set -o vi
+export EDITOR=nvim
 
 export EMAIL='tylerlhobbs@gmail.com'
 export DEBMAIL='tylerlhobbs@gmail.com'
@@ -141,6 +152,6 @@ export FIGNORE=.svn:.pyc:.o
 # man pages shouldn't fill my 30 inch monitor
 export MANWIDTH=100
 
-set -o vi
 
-PATH=$PATH:$HOME/.rvm/bin:/usr/lib/jvm/java-10.0.1-oracle/bin
+export JAVA_HOME=/usr/lib/jvm/java-10.0.2-oracle
+PATH=$PATH:$HOME/.rvm/bin:/usr/lib/jvm/java-10.0.2-oracle/bin
