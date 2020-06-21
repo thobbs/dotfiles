@@ -1,37 +1,35 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" Keep Plugin commands between vundle#begin/end.
+call plug#begin('~/.vim/plugged')
 
 " plugins on GitHub repo
-Plugin 'tpope/vim-fugitive' " git commands
-" Plugin 'tpope/vim-fireplace' " clj repl interaction
-" Plugin 'guns/vim-slamhound' " clj namespace management
-Plugin 'vim-syntastic/syntastic' " clj linter
-Plugin 'aclaimant/syntastic-joker' " clj linter
-Plugin 'vim-airline/vim-airline' " better statusline
-Plugin 'vim-airline/vim-airline-themes' " fit airline to theme
-Plugin 'morhetz/gruvbox' " color scheme
-Plugin 'luochen1990/rainbow'
+Plug 'pangloss/vim-javascript'
+Plug 'tpope/vim-fugitive' " git commands
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' } " clj repl interaction
+" Plug 'guns/vim-slamhound' " clj namespace management
+Plug 'dense-analysis/ale' " linter
+" Plug 'vim-syntastic/syntastic', { 'for': 'clojure' } " linter
+" Plug 'aclaimant/syntastic-joker' " clj linter
+Plug 'vim-airline/vim-airline' " better statusline
+Plug 'vim-airline/vim-airline-themes' " fit airline to theme
+Plug 'morhetz/gruvbox' " color scheme
+Plug 'luochen1990/rainbow'
+Plug 'ThePrimeagen/vim-be-good'
+" Plug 'junegunn/fzf.vim'
 
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+" All of your Plugs must be added before the following line
+call plug#end()              "required
 filetype plugin indent on    " required
 
 syntax enable
 " filetype plugin indent on
 set background=dark
 
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
+
 set expandtab
 
 set mouse=r
@@ -45,6 +43,9 @@ set foldmethod=syntax
 
 " Visually indicate trailing whitespace
 set list listchars=tab:\ \ ,trail:·
+
+" Disable syntax highlighting on files over 100kb in size
+autocmd BufWinEnter * if line2byte(line("$") + 1) > 100000 | syntax clear | endif
 
 colorscheme gruvbox
 
@@ -118,7 +119,7 @@ let g:rbpt_colorpairs = [
     \ ]
 let g:rbpt_max = 16
 
-au VimEnter,BufReadPost * :RainbowToggleOn
+au BufEnter,BufReadPost * :RainbowToggleOn
 let g:rainbow_conf = {
     \    'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
     \    'ctermfgs': ['red', 'darkcyan', 'darkgreen', 'Darkblue', 'darkmagenta', 'brown'],
@@ -142,4 +143,18 @@ let g:rainbow_conf = {
     \    }
     \}
 
-autocmd BufWritePost *.clj call SyntasticCheck()
+" autocmd BufWritePost *.clj call SyntasticCheck()
+
+"""""""""""""""" JAVASCRIPT """""""""""""""
+au FileType javascript set tabstop=2
+au FileType javascript set softtabstop=2
+au FileType javascript set shiftwidth=2
+au FileType javascript set signcolumn=yes
+
+" js linting
+let g:ale_linters = { 'javascript': ['prettier', 'eslint'] }
+let g:ale_fixers = { 'javascript': ['prettier', 'eslint'] }
+let g:ale_sign_column_always = 1
+let g:airline#extensions#ale#enabled = 1
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
