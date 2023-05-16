@@ -84,6 +84,8 @@ endfunction
 " Toggle line numbers and fold column for easy copying:
 nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 
+nnoremap * <C-V>
+
 " Automatically run pyflakes after writing a python file
 let g:syntastic_python_flake8_post_args='--ignore=E501,E128,E225'
 
