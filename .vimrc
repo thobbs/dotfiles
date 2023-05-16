@@ -15,7 +15,7 @@ Plug 'vim-airline/vim-airline' " better statusline
 Plug 'vim-airline/vim-airline-themes' " fit airline to theme
 Plug 'morhetz/gruvbox' " color scheme
 Plug 'luochen1990/rainbow'
-Plug 'ThePrimeagen/vim-be-good'
+" Plug 'ThePrimeagen/vim-be-good'
 " Plug 'junegunn/fzf.vim'
 
 
